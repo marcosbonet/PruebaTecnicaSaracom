@@ -1,23 +1,19 @@
-export function ListPodcast() {
-    const getAll = () => {
-        return fetch(
-            'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json',
-            {
-                method: 'GET',
-            }
-        )
-            .then((response) => {
-                return response.json();
-            })
-            .then((response) => {
-                return response.feed;
-            });
-    };
-    const a = getAll();
-    console.log(a);
+import { Ipodcast } from '../../features/podcast/entities/entities';
+import { usePodcast } from '../../features/podcast/hook/usePodcast';
+import { ItemPodcast } from './item.podcast';
+
+export const ListPodcast = () => {
+    const { podcast } = usePodcast();
+
     return (
         <>
-            <div>Hola mundo</div>
+            <ul>
+                {podcast.map((item: Ipodcast) => (
+                    <li key={Math.random() * 100000000}>
+                        <ItemPodcast item={item} />
+                    </li>
+                ))}
+            </ul>
         </>
     );
-}
+};
