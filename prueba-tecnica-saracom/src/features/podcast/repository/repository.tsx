@@ -25,30 +25,9 @@ export class Repository {
                     };
                 });
                 return podcasts;
+            })
+            .catch((error) => {
+                return console.log(error);
             });
     }
-
-    // Search(dataSearch: string): Promise<Array<Ipodcast>> {
-    //     const url =
-    //         'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json';
-    //     const search = `?q=${dataSearch}`;
-    //     const completeUrl = url + search;
-    //     const result = fetch(completeUrl).then((response) => {
-    //         return response.json();
-    //     });
-    //     return result;
-    // }
-    // query(key: string, value: string): Promise<Array<Ipodcast>> {
-    //     return fetch(`${this.URL}/${key}/${value}`, {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-type': 'application/json',
-    //             Authorization: `Bearer ${localStorage.getItem('token')}`,
-    //         },
-    //     })
-    //         .then((res) => res.json())
-    //         .catch((error) => {
-    //             return error;
-    //         });
-    // }
 }
