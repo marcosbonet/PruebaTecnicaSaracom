@@ -10,7 +10,6 @@ export const usePodcast = () => {
     const apiPodcast = useMemo(() => new Repository(), []);
     useEffect(() => {
         apiPodcast.getAll().then((response) => {
-            console.log(response, 'hola');
             dispatcher(ac.getAllActionCreator(response));
         });
     }, [apiPodcast, dispatcher]);

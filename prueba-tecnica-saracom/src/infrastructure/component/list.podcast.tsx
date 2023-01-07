@@ -4,6 +4,7 @@ import { ItemPodcast } from './item.podcast';
 
 export const ListPodcast = () => {
     const { podcast } = usePodcast();
+    console.log(podcast);
 
     return (
         <>
