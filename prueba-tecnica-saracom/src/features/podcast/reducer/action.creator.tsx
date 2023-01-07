@@ -8,3 +8,6 @@ export const getAllActionCreator = createAction<Array<Ipodcast>>(
 export const queryActionCreator = createAction<Ipodcast>(
     actionPodcastType.query
 );
+export const loadPodcastAction = createAction<Array<Ipodcast>>(
+    actionPodcastType.load
+);

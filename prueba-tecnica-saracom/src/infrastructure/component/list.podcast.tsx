@@ -1,13 +1,14 @@
+import { Search } from '../component/search';
 import { Ipodcast } from '../../features/podcast/entities/entities';
 import { usePodcast } from '../../features/podcast/hook/usePodcast';
 import { ItemPodcast } from './item.podcast';
 
 export const ListPodcast = () => {
     const { podcast } = usePodcast();
-    console.log(podcast);
 
     return (
         <>
+            <Search />
             <ul>
                 {podcast.map((item: Ipodcast) => (
                     <li key={Math.random() * 100000000}>
