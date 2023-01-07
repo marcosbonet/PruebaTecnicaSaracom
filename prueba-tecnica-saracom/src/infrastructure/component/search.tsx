@@ -21,7 +21,7 @@ export function Search() {
         const filter = podcast?.filter((item) =>
             item.artist.includes(form.search)
         );
-        // dispatcher(ac.loadPodcastAction(filter));
+        dispatcher(ac.loadPodcastAction(filter));
         console.log(filter);
     }, [form.search, dispatcher]);
 

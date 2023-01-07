@@ -24,6 +24,8 @@ export class Repository {
                         name: podcast['im:name'].label,
                     };
                 });
+                localStorage.setItem('podcasts', podcasts);
+
                 return podcasts;
             })
             .catch((error) => {

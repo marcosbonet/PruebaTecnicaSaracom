@@ -5,10 +5,7 @@ const initialState: Array<Ipodcast> = [];
 export const Reducer = createReducer(initialState, (builder) => {
     builder.addCase(ac.getAllActionCreator, (_state, action) => action.payload);
 
-    builder.addCase(ac.loadPodcastAction, (state, action) => ({
-        ...state,
-        podcast: action.payload,
-    }));
+    builder.addCase(ac.loadPodcastAction, (_state, action) => action.payload);
 
     builder.addDefaultCase((state) => state);
 });
