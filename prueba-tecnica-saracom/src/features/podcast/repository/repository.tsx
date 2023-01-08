@@ -7,12 +7,9 @@ export class Repository {
             'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json';
     }
     getAll(): Promise<Array<Ipodcast>> {
-        return fetch(
-            'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json',
-            {
-                method: 'GET',
-            }
-        )
+        return fetch(this.URL, {
+            method: 'GET',
+        })
             .then((response) => {
                 return response.json();
             })
@@ -32,4 +29,17 @@ export class Repository {
                 return console.log(error);
             });
     }
+    // getPodcast(id: string): Promise<Array<Ipodcast>> {
+    //     return fetch(`https://itunes.apple.com/lookup?id=1460157002`, {
+    //         method: 'GET',
+    //     })
+    //         .then((response) => {
+    //             return response.json();
+    //         })
+
+    //         .catch((error) => {
+    //             return console.log(error);
+    //         });
+
+    // }
 }
