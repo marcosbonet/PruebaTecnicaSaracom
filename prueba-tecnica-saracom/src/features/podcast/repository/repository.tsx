@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import { Ipodcast } from '../entities/entities';
 
 export class Repository {
@@ -19,6 +20,7 @@ export class Repository {
                         images: podcast['im:image'][2].label,
                         artist: podcast['im:artist'].label,
                         name: podcast['im:name'].label,
+                        id: podcast['id'].attributes['im:id'],
                     };
                 });
                 localStorage.setItem('podcasts', podcasts);
@@ -29,17 +31,33 @@ export class Repository {
                 return console.log(error);
             });
     }
-    // getPodcast(id: string): Promise<Array<Ipodcast>> {
-    //     return fetch(`https://itunes.apple.com/lookup?id=1460157002`, {
-    //         method: 'GET',
-    //     })
-    //         .then((response) => {
-    //             return response.json();
-    //         })
 
-    //         .catch((error) => {
-    //             return console.log(error);
-    //         });
+    getPodcast(id: string): Promise<Array<Ipodcast>> {
+        return fetch(
+            `https://api.allorigins.win/get?url=${encodeURIComponent(
+                `https://itunes.apple.com/lookup?id=${id}`
+            )}`
+        )
+            .then((response) => {
+                if (response.ok) return response.json();
+                throw new Error('Network response was not ok.');
+            })
+            .then((data) => JSON.parse(data.contents))
+            .then(({ results }) => {
+                const podcasts = results.map((podcast: any) => {
+                    return {
+                        images: podcast.artistViewUrl,
+                        artist: podcast.artistName,
+                        name: podcast.trackName,
 
-    // }
+                        id: podcast.artistId,
+                    };
+                });
+
+                return podcasts;
+            })
+            .catch((error) => {
+                return console.log(error);
+            });
+    }
 }

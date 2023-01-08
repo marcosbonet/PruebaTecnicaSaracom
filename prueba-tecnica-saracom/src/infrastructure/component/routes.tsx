@@ -7,13 +7,10 @@ export function AppRoutes() {
     return (
         <Routes>
             <Route path="/home" element={<Home />}></Route>
-            <Route path="/detailsPodcast" element={<DetailsPodcast />}></Route>
+            <Route path="/podcast/:id" element={<DetailsPodcast />}></Route>
             <Route path="/detailsEpisode" element={<DetailsEpisode />}></Route>
 
-            <Route
-                path="*"
-                element={<h1>404 No se encontró la ruta</h1>}
-            ></Route>
+            <Route path="*" element={<Home />}></Route>
         </Routes>
     );
 }
