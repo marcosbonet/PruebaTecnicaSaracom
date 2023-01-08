@@ -22,7 +22,6 @@ export function Search() {
             item.artist.includes(form.search)
         );
         dispatcher(ac.loadPodcastAction(filter));
-        console.log(filter);
     }, [form.search, dispatcher]);
 
     return (
