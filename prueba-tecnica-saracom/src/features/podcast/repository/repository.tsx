@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { Ipodcast } from '../entities/entities';
 
 export class Repository {
@@ -46,10 +45,10 @@ export class Repository {
             .then(({ results }) => {
                 const podcasts = results.map((podcast: any) => {
                     return {
-                        images: podcast.artistViewUrl,
+                        images: podcast.artworkUrl600,
                         artist: podcast.artistName,
                         name: podcast.trackName,
-
+                        urlDescription: podcast.feedUrl,
                         id: podcast.artistId,
                     };
                 });
@@ -59,5 +58,32 @@ export class Repository {
             .catch((error) => {
                 return console.log(error);
             });
+    }
+    getDetails(url: string): Promise<any> {
+        console.log(url);
+        return (
+            fetch(url)
+                .then((response) => {
+                    console.log(response);
+                })
+
+                // .then(({ results }) => {
+                //     console.log(results);
+                //     const podcasts = results.map((podcast: any) => {
+                //         return {
+                //             images: podcast.artworkUrl600,
+                //             artist: podcast.artistName,
+                //             name: podcast.trackName,
+                //             urlDescription: podcast.feedUrl,
+                //             id: podcast.artistId,
+                //         };
+                //     });
+
+                //     return podcasts;
+                // })
+                .catch((error) => {
+                    return console.log(error);
+                })
+        );
     }
 }

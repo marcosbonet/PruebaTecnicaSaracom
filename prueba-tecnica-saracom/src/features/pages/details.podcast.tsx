@@ -15,21 +15,28 @@ export function DetailsPodcast() {
         repo.getPodcast(id as string).then((res) => {
             setPodcast(res);
         });
+        if (podcast[0]) {
+            repo.getDetails(podcast[0].urlDescription as string).then((res) => {
+                console.log(res, 'resp');
+            });
+        }
     }, []);
-    console.log(podcast);
 
     return (
         <>
             {podcast[0] ? (
                 <>
-                    <div>{podcast[0].name}</div>
-                    <img
-                        src={podcast[0].images}
-                        alt={podcast[0].name}
-                        width="200px"
-                    ></img>
-                    <p>{podcast[0].name}</p>
-                    <p>{podcast[0].artist}</p>
+                    {' '}
+                    <div className={'container'}>
+                        <img
+                            src={podcast[0].images}
+                            alt={podcast[0].name}
+                            width="200px"
+                            className={'detailImage'}
+                        ></img>
+                        <p className={'navName'}>{podcast[0].name}</p>
+                        <p className={'navArtist'}> By {podcast[0].artist}</p>
+                    </div>
                 </>
             ) : (
                 <p>loading...</p>

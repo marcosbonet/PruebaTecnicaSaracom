@@ -2,6 +2,7 @@ import { SyntheticEvent, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { usePodcast } from '../../features/podcast/hook/usePodcast';
 import * as ac from '../../features/podcast/reducer/action.creator';
+
 export function Search() {
     const { podcast } = usePodcast();
     const dispatcher = useDispatch();
@@ -26,11 +27,12 @@ export function Search() {
 
     return (
         <>
-            <div>
+            <div className={'search'}>
                 <form>
+                    <p>100</p>
                     <input
                         type="text"
-                        placeholder="Search"
+                        placeholder="Filter Podcasts"
                         name="search"
                         value={form.search}
                         onInput={handleForm}

@@ -1,8 +1,7 @@
-import { Search } from '../component/search';
+import { Search } from './search';
 import { Ipodcast } from '../../features/podcast/entities/entities';
 import { usePodcast } from '../../features/podcast/hook/usePodcast';
 import { ItemPodcast } from './item.podcast';
-import { useNavigate } from 'react-router-dom';
 
 export const ListPodcast = () => {
     const { podcast } = usePodcast();
@@ -10,9 +9,9 @@ export const ListPodcast = () => {
     return (
         <>
             <Search />
-            <ul>
+            <ul className={'ul'}>
                 {podcast.map((item: Ipodcast) => (
-                    <li key={Math.random() * 100000000}>
+                    <li key={Math.random() * 100000000} className={'li'}>
                         <ItemPodcast item={item} />
                     </li>
                 ))}

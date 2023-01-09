@@ -2,5 +2,6 @@ export type Ipodcast = {
     name: string;
     artist: string;
     images: string;
-    id: NumberConstructor;
+    id: number;
+    urlDescription?: string;
 };
