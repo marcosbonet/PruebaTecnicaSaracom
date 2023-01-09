@@ -1,3 +1,4 @@
+import { Search } from './search';
 import { Ipodcast } from '../../features/podcast/entities/entities';
 import { usePodcast } from '../../features/podcast/hook/usePodcast';
 import { ItemPodcast } from './item.podcast';
@@ -7,9 +8,10 @@ export const ListPodcast = () => {
 
     return (
         <>
-            <ul>
+            <Search />
+            <ul className={'ul'}>
                 {podcast.map((item: Ipodcast) => (
-                    <li key={Math.random() * 100000000}>
+                    <li key={Math.random() * 100000000} className={'li'}>
                         <ItemPodcast item={item} />
                     </li>
                 ))}
